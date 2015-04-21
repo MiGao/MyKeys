@@ -1,17 +1,15 @@
-package com.migao.mykeys.database;
+package com.migao.mykeys.database.account;
 
 import android.provider.BaseColumns;
 
 /**
  * Created by Mike on 2/25/2015.
  */
-public class AccountContract {
-    private static final String TEXT_TYPE = " TEXT";
-    private static final String COMMA_SEP = ",";
-    private static final String SQL_CREATE_ACCOUNT =
+public final class AccountContract {
+    public static final String SQL_CREATE_TABLE =
             "CREATE TABLE " + AccountEntry.TABLE_NAME + " (" +
-            AccountEntry._ID + " INTEGER PRIMARY KEY, ";
-            // TODO: Continue defining the table
+                    AccountEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    AccountEntry.COLUMN_NAME_ACCOUNT_NAME + " TEXT NOT NULL);";
 
     public AccountContract() {}
 
