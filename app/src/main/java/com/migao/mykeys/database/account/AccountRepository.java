@@ -1,8 +1,12 @@
 package com.migao.mykeys.database.account;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.migao.mykeys.database.account.AccountContract.AccountEntry;
+import com.migao.mykeys.database.helper.KeysDbHelper;
 
 /**
  * Created by Mike on 4/21/2015.
@@ -10,18 +14,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 public final class AccountRepository {
 	private SQLiteOpenHelper dbHelper;
 
-	public AccountRepository(final SQLiteOpenHelper dbHelper) {
-		this.dbHelper = dbHelper;
+	public AccountRepository(final Context context) {
+		this.dbHelper = new KeysDbHelper(context);
 	}
 
 	public long insert(final Account account) {
-		final SQLiteDatabase db = dbHelper.getWritableDatabase();
-
 		final ContentValues values = new ContentValues();
-		values.put(AccountContract.AccountEntry.COLUMN_NAME_ACCOUNT_NAME, account.getAccount());
+		values.put(AccountEntry.COLUMN_NAME_ACCOUNT_NAME, account.getAccount());
 
-		final long accountId = db.insert(AccountContract.AccountEntry.TABLE_NAME, null, values);
-
+		final SQLiteDatabase db = dbHelper.getWritableDatabase();
+		final long accountId = db.insert(AccountEntry.TABLE_NAME, null, values);
 		db.close();
 
 		return accountId;
