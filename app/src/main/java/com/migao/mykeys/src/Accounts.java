@@ -40,16 +40,10 @@ public class Accounts extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
 
-        /*accountListView = (ListView) findViewById(R.id.accountsListView);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, Arrays.asList("Account 1", "Account 2", "Account 3"));
-
-        accountListView.setAdapter(adapter);*/
-
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
+        setTitle(mTitle);
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -148,7 +142,7 @@ public class Accounts extends ActionBarActivity
 
             ListView accountList = (ListView) rootView.findViewById(R.id.accountList);
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, Arrays.asList("hello", "world"));
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, Arrays.asList("Hello", "Eva", "!"));
 
             accountList.setAdapter(adapter);
 
