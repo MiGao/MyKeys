@@ -20,7 +20,7 @@ import com.migao.mykeys.R;
 import java.util.Arrays;
 
 
-public class Accounts extends ActionBarActivity
+public class AccountsActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     private ListView accountListView;
@@ -141,7 +141,7 @@ public class Accounts extends ActionBarActivity
 
             ListView accountList = (ListView) rootView.findViewById(R.id.accountList);
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, Arrays.asList("Hello", "Eva", "!"));
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, Arrays.asList("Facebook", "Gmail", "Tumblr", "Instagram"));
 
             accountList.setAdapter(adapter);
 
@@ -151,7 +151,7 @@ public class Accounts extends ActionBarActivity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((Accounts) activity).onSectionAttached(
+            ((AccountsActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }

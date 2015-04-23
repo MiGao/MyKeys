@@ -250,7 +250,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_add_account) {
-            final Intent intent = new Intent(getActivity(), AddAccount.class);
+            final Intent intent = new Intent(getActivity(), AddAccountActivity.class);
             startActivity(intent);
 
             return true;

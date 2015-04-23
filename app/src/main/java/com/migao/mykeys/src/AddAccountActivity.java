@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.migao.mykeys.R;
 
-public class AddAccount extends ActionBarActivity {
+public class AddAccountActivity extends ActionBarActivity {
 
 	private EditText etAccount;
 	private EditText etPassword;
