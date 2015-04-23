@@ -11,6 +11,7 @@
         android:maxSdkVersion="18" />
 
     <application
+        android:name="com.activeandroid.app.Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,6 +30,12 @@
             android:label="@string/title_activity_add_account"
             android:parentActivityName=".src.AccountsActivity">
         </activity>
+
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.migao.mykeys.database.account.Account, com.migao.mykeys.database.password.Password"/>
+        <meta-data android:name="AA_DB_NAME" android:value="MyKeys.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
     </application>
 
 </manifest>

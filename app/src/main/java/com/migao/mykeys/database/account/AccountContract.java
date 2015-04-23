@@ -15,6 +15,8 @@ public final class AccountContract {
                     AccountEntry.COLUMN_NAME_ACCOUNT_NAME + ", " +
                     AccountEntry.COLUMN_NAME_USER_NAME + "));";
 
+    public static final String[] ALL_COLUMNS = {AccountEntry.COLUMN_NAME_ACCOUNT_NAME, AccountEntry.COLUMN_NAME_USER_NAME};
+
     public AccountContract() {}
 
     public static abstract class AccountEntry implements BaseColumns {

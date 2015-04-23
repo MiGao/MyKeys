@@ -2,6 +2,7 @@ package com.migao.mykeys.database.account;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -27,5 +28,15 @@ public final class AccountRepository {
 		db.close();
 
 		return accountId;
+	}
+
+	public Cursor selectAll() {
+		final SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+		final Cursor cursor = db.query(AccountEntry.TABLE_NAME, AccountContract.ALL_COLUMNS, null, null, null, null, null);
+
+		db.close();
+
+		return cursor;
 	}
 }
