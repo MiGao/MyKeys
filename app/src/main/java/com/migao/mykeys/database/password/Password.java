@@ -1,13 +1,30 @@
 package com.migao.mykeys.database.password;
 
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.migao.mykeys.database.account.Account;
+
 /**
  * Created by Mike on 4/21/2015.
  */
-public class Password {
+@Table(name = "Password")
+public class Password extends Model {
+	@Column(name = "password")
 	private String password;
+
+	@Column(name = "effective_date")
 	private String effectiveDate;
+
+	@Column(name = "end_date")
 	private String endDate;
-	private String accountId;
+
+	@Column(name = "account_id")
+	private Account account;
+
+	public Password() {
+		super();
+	}
 
 	public String getPassword() {
 		return password;
@@ -21,15 +38,15 @@ public class Password {
 		return endDate;
 	}
 
-	public String getAccountId() {
-		return accountId;
+	public Account getAccount() {
+		return account;
 	}
 
 	public static class Builder {
 		private String password;
 		private String effectiveDate;
 		private String endDate;
-		private String accountId;
+		private Account account;
 
 		public Builder withPassword(final String password) {
 			this.password = password;
@@ -46,11 +63,16 @@ public class Password {
 			return this;
 		}
 
+		public Builder withAccount(final Account account) {
+			this.account = account;
+			return this;
+		}
+
 		public Builder withValues(final Password p) {
 			password = p.password;
 			effectiveDate = p.effectiveDate;
 			endDate = p.endDate;
-			accountId = p.accountId;
+			account = p.account;
 			return this;
 		}
 
@@ -63,6 +85,6 @@ public class Password {
 		password = b.password;
 		effectiveDate = b.effectiveDate;
 		endDate = b.endDate;
-		accountId = b.accountId;
+		account = b.account;
 	}
 }

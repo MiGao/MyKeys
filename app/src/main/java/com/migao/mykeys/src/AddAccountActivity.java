@@ -9,11 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.activeandroid.ActiveAndroid;
 import com.migao.mykeys.R;
+import com.migao.mykeys.database.account.Account;
+import com.migao.mykeys.database.password.Password;
+
+import org.joda.time.DateTime;
 
 public class AddAccountActivity extends ActionBarActivity {
 
 	private EditText etAccount;
+	private EditText etUserName;
 	private EditText etPassword;
 	private Button btnCancel;
 	private Button btnSave;
@@ -28,6 +34,7 @@ public class AddAccountActivity extends ActionBarActivity {
 
 	private void setupViews() {
 		etAccount = (EditText) findViewById(R.id.etAccount);
+		etUserName = (EditText) findViewById(R.id.etUserName);
 		etPassword = (EditText) findViewById(R.id.etPassword);
 		btnCancel = (Button) findViewById(R.id.btnCancel);
 		btnSave = (Button) findViewById(R.id.btnSave);
@@ -38,7 +45,29 @@ public class AddAccountActivity extends ActionBarActivity {
 	}
 
 	public void save(final View view) {
+		ActiveAndroid.beginTransaction();
+
+		final Account account = new Account.Builder()
+				.withAccountName(etAccount.getText().toString())
+				.withUserName(etUserName.getText().toString())
+				.build();
+
+		account.save();
+
+		final Password password = new Password.Builder()
+				.withPassword(etPassword.getText().toString())
+				.withEffectiveDate(DateTime.now().toString())
+				.withAccount(account)
+				.build();
+
+		password.save();
+
+		ActiveAndroid.setTransactionSuccessful();
+		ActiveAndroid.endTransaction();
+
 		Toast.makeText(this, etAccount.getText().toString() + " account saved!", Toast.LENGTH_LONG).show();
+
+		finish();
 	}
 
 	@Override

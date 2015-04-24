@@ -28,6 +28,7 @@ public class Account extends Model {
 		// Query all items without any conditions
 		String resultRecords = new Select(tableName + ".*, " + tableName + ".Id AS _id")
 				.from(Account.class)
+				.orderBy("account_name")
 				.toSql();
 		// Execute query on the underlying ActiveAndroid SQLite database
 		Cursor resultCursor = Cache.openDatabase().rawQuery(resultRecords, null);
@@ -38,16 +39,27 @@ public class Account extends Model {
 		return accountName;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
 	public static class Builder {
 		private String accountName;
+		private String userName;
 
 		public Builder withAccountName(final String accountName) {
 			this.accountName = accountName;
 			return this;
 		}
 
+		public Builder withUserName(final String userName) {
+			this.userName = userName;
+			return this;
+		}
+
 		public Builder withValues(final Account account) {
 			accountName = account.accountName;
+			userName = account.userName;
 			return this;
 		}
 
@@ -58,5 +70,6 @@ public class Account extends Model {
 
 	private Account(Builder b) {
 		accountName = b.accountName;
+		userName = b.userName;
 	}
 }

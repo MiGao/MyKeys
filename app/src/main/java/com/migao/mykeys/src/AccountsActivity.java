@@ -1,6 +1,7 @@
 package com.migao.mykeys.src;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,18 +13,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.migao.mykeys.R;
-
-import java.util.Arrays;
+import com.migao.mykeys.database.account.Account;
+import com.migao.mykeys.database.account.AccountAdapter;
 
 
 public class AccountsActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-
-    private ListView accountListView;
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -49,6 +47,11 @@ public class AccountsActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
     }
 
     @Override
@@ -119,6 +122,8 @@ public class AccountsActivity extends ActionBarActivity
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        private AccountAdapter accountAdapter;
+
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -137,13 +142,13 @@ public class AccountsActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_accounts, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_accounts, container, false);
+            final ListView accountList = (ListView) rootView.findViewById(R.id.accountList);
 
-            ListView accountList = (ListView) rootView.findViewById(R.id.accountList);
+            final Cursor accountCursor = Account.fetchResultCursor();
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, Arrays.asList("Facebook", "Gmail", "Tumblr", "Instagram"));
-
-            accountList.setAdapter(adapter);
+            accountAdapter = new AccountAdapter(getActivity(), accountCursor, false);
+            accountList.setAdapter(accountAdapter);
 
             return rootView;
         }
@@ -153,6 +158,14 @@ public class AccountsActivity extends ActionBarActivity
             super.onAttach(activity);
             ((AccountsActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            if (accountAdapter != null) {
+                accountAdapter.swapCursor(Account.fetchResultCursor());
+            }
         }
     }
 

@@ -23,7 +23,7 @@ public class PasswordRepository {
 		values.put(PasswordEntry.COLUMN_NAME_PASSWORD, password.getPassword());
 		values.put(PasswordEntry.COLUMN_NAME_EFFECTIVE_DATE, password.getEffectiveDate());
 		values.put(PasswordEntry.COLUMN_NAME_END_DATE, password.getEndDate());
-		values.put(PasswordEntry.COLUMN_NAME_ACCOUNT_ID, password.getAccountId());
+		values.put(PasswordEntry.COLUMN_NAME_ACCOUNT_ID, password.getAccount().getId());
 
 		final SQLiteDatabase db = dbHelper.getWritableDatabase();
 		final long accountId = db.insert(PasswordEntry.TABLE_NAME, null, values);

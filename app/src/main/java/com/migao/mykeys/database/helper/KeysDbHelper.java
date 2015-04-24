@@ -3,6 +3,7 @@ package com.migao.mykeys.database.helper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.migao.mykeys.database.account.AccountContract;
 import com.migao.mykeys.database.password.PasswordContract;

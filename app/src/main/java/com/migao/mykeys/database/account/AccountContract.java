@@ -11,9 +11,8 @@ public final class AccountContract {
                     AccountEntry._ID + " INTEGER AUTOINCREMENT, " +
                     AccountEntry.COLUMN_NAME_ACCOUNT_NAME + " TEXT NOT NULL, " +
                     AccountEntry.COLUMN_NAME_USER_NAME + " TEXT NOT NULL, " +
-                    " PRIMARY KEY(" + AccountEntry._ID + ", " +
-                    AccountEntry.COLUMN_NAME_ACCOUNT_NAME + ", " +
-                    AccountEntry.COLUMN_NAME_USER_NAME + "));";
+                    " PRIMARY KEY (" + AccountEntry.COLUMN_NAME_ACCOUNT_NAME + ", " +
+                    AccountEntry.COLUMN_NAME_USER_NAME + ") );";
 
     public static final String[] ALL_COLUMNS = {AccountEntry.COLUMN_NAME_ACCOUNT_NAME, AccountEntry.COLUMN_NAME_USER_NAME};
 

@@ -15,13 +15,51 @@ import com.migao.mykeys.database.account.AccountContract.AccountEntry;
  * Created by Mike on 4/22/2015.
  */
 public class AccountAdapter extends CursorAdapter {
+	static class ViewHolder {
+		TextView tvAccountName;
+		TextView tvUserName;
+	}
+
+	private final LayoutInflater mInflater;
+	private final Cursor cursor;
+
 	public AccountAdapter(Context context, Cursor c, boolean autoRequery) {
 		super(context, c, autoRequery);
+		//mInflater = ((Activity) context).getLayoutInflater();
+		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		this.cursor = c;
 	}
+
+	/*@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		final ViewHolder viewHolder;
+
+		if (convertView == null) {
+			convertView = mInflater.inflate(R.layout.item_account, parent, false);
+
+			viewHolder = new ViewHolder();
+			viewHolder.tvAccountName = (TextView) convertView.findViewById(R.id.tvAccountName);
+			viewHolder.tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
+
+			convertView.setTag(viewHolder);
+		} else {
+			viewHolder = (ViewHolder) convertView.getTag();
+		}
+
+		cursor.moveToPosition(position);
+
+		final String accountName = cursor.getString(cursor.getColumnIndexOrThrow(AccountEntry.COLUMN_NAME_ACCOUNT_NAME));
+		final String userName = cursor.getString(cursor.getColumnIndexOrThrow(AccountEntry.COLUMN_NAME_USER_NAME));
+
+		viewHolder.tvAccountName.setText(accountName);
+		viewHolder.tvUserName.setText(userName);
+
+		return convertView;
+	}*/
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-		return LayoutInflater.from(context).inflate(R.layout.item_account, parent, false);
+		return mInflater.inflate(R.layout.item_account, parent, false);
 	}
 
 	@Override
@@ -34,5 +72,12 @@ public class AccountAdapter extends CursorAdapter {
 
 		tvAccountName.setText(accountName);
 		tvUserName.setText(userName);
+	}
+
+	@Override
+	public void notifyDataSetChanged() {
+		super.notifyDataSetChanged();
+
+
 	}
 }

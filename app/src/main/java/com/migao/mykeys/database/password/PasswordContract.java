@@ -10,10 +10,12 @@ import com.migao.mykeys.database.account.AccountContract;
 public final class PasswordContract {
 	public static final String SQL_CREATE_TABLE =
 		"CREATE TABLE " + PasswordEntry.TABLE_NAME + " (" +
-				PasswordEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+				PasswordEntry._ID + " INTEGER AUTOINCREMENT, " +
 				PasswordEntry.COLUMN_NAME_PASSWORD + " TEXT NOT NULL, " +
 				PasswordEntry.COLUMN_NAME_EFFECTIVE_DATE + " TEXT NOT NULL, " +
 				PasswordEntry.COLUMN_NAME_END_DATE + " TEXT, " +
+				"PRIMARY KEY (" + PasswordEntry.COLUMN_NAME_PASSWORD + ", " +
+				PasswordEntry.COLUMN_NAME_EFFECTIVE_DATE + "), " +
 				"FOREIGN KEY (" + PasswordEntry.COLUMN_NAME_ACCOUNT_ID + ") REFERENCES Account(" + AccountContract.AccountEntry._ID + "));";
 
 	public PasswordContract() {}
