@@ -1,4 +1,4 @@
-package com.migao.mykeys.database.account;
+package com.migao.mykeys.src.database.account;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.migao.mykeys.database.account.AccountContract.AccountEntry;
-import com.migao.mykeys.database.helper.KeysDbHelper;
+import com.migao.mykeys.src.database.account.AccountContract.AccountEntry;
+import com.migao.mykeys.src.database.helper.KeysDbHelper;
 
 /**
  * Created by Mike on 4/21/2015.
@@ -21,7 +21,7 @@ public final class AccountRepository {
 
 	public long insert(final Account account) {
 		final ContentValues values = new ContentValues();
-		values.put(AccountEntry.COLUMN_NAME_ACCOUNT_NAME, account.getAccount());
+		values.put(AccountEntry.COLUMN_NAME_ACCOUNT_NAME, account.getAccountName());
 
 		final SQLiteDatabase db = dbHelper.getWritableDatabase();
 		final long accountId = db.insert(AccountEntry.TABLE_NAME, null, values);

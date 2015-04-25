@@ -1,4 +1,4 @@
-package com.migao.mykeys.database.account;
+package com.migao.mykeys.src.database.account;
 
 import android.database.Cursor;
 
@@ -35,7 +35,7 @@ public class Account extends Model {
 		return resultCursor;
 	}
 
-	public String getAccount() {
+	public String getAccountName() {
 		return accountName;
 	}
 

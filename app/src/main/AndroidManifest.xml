@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".src.AccountsActivity"
+            android:name=".src.activity.AccountsActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,9 +26,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".src.AddAccountActivity"
+            android:name=".src.activity.AddAccountActivity"
             android:label="@string/title_activity_add_account"
-            android:parentActivityName=".src.AccountsActivity">
+            android:parentActivityName=".src.activity.AccountsActivity">
         </activity>
 
         <meta-data

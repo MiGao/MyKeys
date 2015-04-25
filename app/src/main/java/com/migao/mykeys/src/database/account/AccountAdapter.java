@@ -1,4 +1,4 @@
-package com.migao.mykeys.database.account;
+package com.migao.mykeys.src.database.account;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,7 +9,7 @@ import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import com.migao.mykeys.R;
-import com.migao.mykeys.database.account.AccountContract.AccountEntry;
+import com.migao.mykeys.src.database.account.AccountContract.AccountEntry;
 
 /**
  * Created by Mike on 4/22/2015.
@@ -25,12 +25,11 @@ public class AccountAdapter extends CursorAdapter {
 
 	public AccountAdapter(Context context, Cursor c, boolean autoRequery) {
 		super(context, c, autoRequery);
-		//mInflater = ((Activity) context).getLayoutInflater();
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.cursor = c;
 	}
 
-	/*@Override
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final ViewHolder viewHolder;
 
@@ -55,7 +54,7 @@ public class AccountAdapter extends CursorAdapter {
 		viewHolder.tvUserName.setText(userName);
 
 		return convertView;
-	}*/
+	}
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -72,12 +71,5 @@ public class AccountAdapter extends CursorAdapter {
 
 		tvAccountName.setText(accountName);
 		tvUserName.setText(userName);
-	}
-
-	@Override
-	public void notifyDataSetChanged() {
-		super.notifyDataSetChanged();
-
-
 	}
 }

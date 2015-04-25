@@ -1,4 +1,4 @@
-package com.migao.mykeys.src;
+package com.migao.mykeys.src.activity;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -16,8 +16,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.migao.mykeys.R;
-import com.migao.mykeys.database.account.Account;
-import com.migao.mykeys.database.account.AccountAdapter;
+import com.migao.mykeys.src.database.account.Account;
+import com.migao.mykeys.src.database.account.AccountAdapter;
+import com.migao.mykeys.src.fragment.NavigationDrawerFragment;
 
 
 public class AccountsActivity extends ActionBarActivity
@@ -143,12 +144,11 @@ public class AccountsActivity extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_accounts, container, false);
-            final ListView accountList = (ListView) rootView.findViewById(R.id.accountList);
-
+            final ListView accountListView = (ListView) rootView.findViewById(R.id.accountList);
             final Cursor accountCursor = Account.fetchResultCursor();
 
             accountAdapter = new AccountAdapter(getActivity(), accountCursor, false);
-            accountList.setAdapter(accountAdapter);
+            accountListView.setAdapter(accountAdapter);
 
             return rootView;
         }

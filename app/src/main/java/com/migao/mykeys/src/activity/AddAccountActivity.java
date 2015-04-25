@@ -1,4 +1,4 @@
-package com.migao.mykeys.src;
+package com.migao.mykeys.src.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.activeandroid.ActiveAndroid;
 import com.migao.mykeys.R;
-import com.migao.mykeys.database.account.Account;
-import com.migao.mykeys.database.password.Password;
+import com.migao.mykeys.src.database.account.Account;
+import com.migao.mykeys.src.database.password.Password;
 
 import org.joda.time.DateTime;
 
@@ -21,7 +21,6 @@ public class AddAccountActivity extends ActionBarActivity {
 	private EditText etAccount;
 	private EditText etUserName;
 	private EditText etPassword;
-	private Button btnCancel;
 	private Button btnSave;
 
 	@Override
@@ -36,12 +35,7 @@ public class AddAccountActivity extends ActionBarActivity {
 		etAccount = (EditText) findViewById(R.id.etAccount);
 		etUserName = (EditText) findViewById(R.id.etUserName);
 		etPassword = (EditText) findViewById(R.id.etPassword);
-		btnCancel = (Button) findViewById(R.id.btnCancel);
 		btnSave = (Button) findViewById(R.id.btnSave);
-	}
-
-	public void cancel(final View view) {
-		super.onBackPressed();
 	}
 
 	public void save(final View view) {

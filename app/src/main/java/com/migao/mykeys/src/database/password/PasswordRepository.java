@@ -1,12 +1,12 @@
-package com.migao.mykeys.database.password;
+package com.migao.mykeys.src.database.password;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.migao.mykeys.database.helper.KeysDbHelper;
-import com.migao.mykeys.database.password.PasswordContract.PasswordEntry;
+import com.migao.mykeys.src.database.helper.KeysDbHelper;
+import com.migao.mykeys.src.database.password.PasswordContract.PasswordEntry;
 
 /**
  * Created by Mike on 4/21/2015.

@@ -1,9 +1,10 @@
-package com.migao.mykeys.database.password;
+package com.migao.mykeys.src.database.password;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-import com.migao.mykeys.database.account.Account;
+import com.activeandroid.query.Select;
+import com.migao.mykeys.src.database.account.Account;
 
 /**
  * Created by Mike on 4/21/2015.
@@ -40,6 +41,10 @@ public class Password extends Model {
 
 	public Account getAccount() {
 		return account;
+	}
+
+	public static Password retrievePassword(final String accountId) {
+		return new Select().from(Password.class).where("account_id = ?", accountId).executeSingle();
 	}
 
 	public static class Builder {

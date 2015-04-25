@@ -1,8 +1,8 @@
-package com.migao.mykeys.database.password;
+package com.migao.mykeys.src.database.password;
 
 import android.provider.BaseColumns;
 
-import com.migao.mykeys.database.account.AccountContract;
+import com.migao.mykeys.src.database.account.AccountContract;
 
 /**
  * Created by Mike on 4/20/2015.

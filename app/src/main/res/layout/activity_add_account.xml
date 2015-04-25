@@ -7,7 +7,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.migao.mykeys.src.AddAccountActivity">
+                tools:context="com.migao.mykeys.src.activity.AddAccountActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -51,25 +51,11 @@
         android:paddingTop="4dp"
         android:paddingBottom="4dp"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <Button
+        android:id="@+id/btnSave"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/cancel"
-            android:onClick="cancel"/>
-
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/save"
-            android:onClick="save"/>
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:onClick="save"/>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.migao.mykeys.src;
+package com.migao.mykeys.src.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.migao.mykeys.R;
+import com.migao.mykeys.src.activity.AddAccountActivity;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.

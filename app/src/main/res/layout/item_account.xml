@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:background="#99FF99" />
+        android:background="#666666" />
+    <!-- android:background="#99FF99"  /> -->
 
     <TextView
         android:id="@+id/tvUserName"
@@ -19,6 +20,9 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:background="#FFFFFF" />
+        android:background="#666666" />
+
+
+        <!-- android:background="#FFFFFF" /> -->
 
 </LinearLayout>
