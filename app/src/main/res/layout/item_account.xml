@@ -2,27 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="?android:listPreferredItemHeight"
               android:paddingTop="@dimen/view_top_margin"
               android:paddingBottom="@dimen/view_bottom_margin">
 
     <TextView
         android:id="@+id/tvAccountName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:background="#666666" />
-    <!-- android:background="#99FF99"  /> -->
+        android:background="@color/dark_grey" />
 
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:paddingLeft="8dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:background="#666666" />
+        android:background="@color/dark_grey" />
 
-
-        <!-- android:background="#FFFFFF" /> -->
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:background="@color/dark_grey" />
 
 </LinearLayout>

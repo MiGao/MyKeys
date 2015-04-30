@@ -150,6 +150,47 @@ public class AccountsActivity extends ActionBarActivity
             accountAdapter = new AccountAdapter(getActivity(), accountCursor, false);
             accountListView.setAdapter(accountAdapter);
 
+            /*accountListView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    int action = event.getActionMasked();
+                    int position = accountListView.pointToPosition(Math.round(event.getX()), Math.round(event.getY()));
+                    ViewHolder viewHolder = (ViewHolder) v.getTag();
+
+                    switch (action) {
+                        case MotionEvent.ACTION_DOWN:
+                            accountCursor.moveToPosition(position);
+                            String accountId = accountCursor.getString(accountCursor.getColumnIndex(AccountContract.AccountEntry._ID));
+                            String password = Password.retrievePassword(accountId).getPassword();
+                            Log.d("Password", password);
+
+                            if (viewHolder != null) {
+                                viewHolder.tvAccountName.setVisibility(View.GONE);
+                                viewHolder.tvUserName.setVisibility(View.GONE);
+                                viewHolder.tvPassword.setVisibility(View.VISIBLE);
+                                viewHolder.tvPassword.setText(password);
+                            } else {
+                                Log.d("ViewHolder", "NULL");
+                            }
+
+                            return true;
+                        case MotionEvent.ACTION_UP:
+                            if (viewHolder != null) {
+                                viewHolder.tvAccountName.setVisibility(View.VISIBLE);
+                                viewHolder.tvUserName.setVisibility(View.VISIBLE);
+                                viewHolder.tvPassword.setVisibility(View.GONE);
+                                viewHolder.tvPassword.setText("");
+                            } else {
+                                Log.d("ViewHolder", "NULL");
+                            }
+
+                            return true;
+                        default:
+                            return false;
+                    }
+                }
+            });*/
+
             return rootView;
         }
 
@@ -162,10 +203,10 @@ public class AccountsActivity extends ActionBarActivity
 
         @Override
         public void onResume() {
-            super.onResume();
             if (accountAdapter != null) {
                 accountAdapter.swapCursor(Account.fetchResultCursor());
             }
+            super.onResume();
         }
     }
 

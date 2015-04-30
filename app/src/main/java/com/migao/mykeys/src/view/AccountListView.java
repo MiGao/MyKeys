@@ -3,19 +3,16 @@ package com.migao.mykeys.src.view;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.migao.mykeys.src.database.account.AccountAdapter;
-import com.migao.mykeys.src.database.account.AccountContract;
-import com.migao.mykeys.src.database.password.Password;
 
 /**
  * Created by Mike on 4/25/2015.
  */
 public class AccountListView extends ListView {
+	private AccountAdapter accountAdapter;
 	private Cursor cursor;
 
 	public AccountListView(Context context) {
@@ -32,13 +29,13 @@ public class AccountListView extends ListView {
 
 	@Override
 	public void setAdapter(ListAdapter adapter) {
-		AccountAdapter accountAdapter = (AccountAdapter) adapter;
+		accountAdapter = (AccountAdapter) adapter;
 		cursor = accountAdapter.getCursor();
 
 		super.setAdapter(adapter);
 	}
 
-	@Override
+	/*@Override
 	public boolean onTouchEvent(MotionEvent ev) {
 		int action = ev.getActionMasked();
 		int position = pointToPosition(Math.round(ev.getX()), Math.round(ev.getY()));
@@ -57,5 +54,6 @@ public class AccountListView extends ListView {
 			default:
 				return super.onTouchEvent(ev);
 		}
-	}
+	}*/
+
 }
