@@ -7,11 +7,13 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
+import com.migao.mykeys.src.database.account.AccountContract.AccountEntry;
+import com.migao.mykeys.src.database.password.Password;
 
 /**
  * Created by Mike on 4/21/2015.
  */
-@Table(name = "Account")
+@Table(name = "Account", id = AccountEntry._ID)
 public class Account extends Model {
 	@Column(name = "account_name")
 	private String accountName;
@@ -24,10 +26,17 @@ public class Account extends Model {
 	}
 
 	public static Cursor fetchResultCursor() {
-		String tableName = Cache.getTableInfo(Account.class).getTableName();
+		String accountTableName = Cache.getTableInfo(Account.class).getTableName();
+		String passwordTableName = Cache.getTableInfo(Password.class).getTableName();
+
 		// Query all items without any conditions
-		String resultRecords = new Select(tableName + ".*, " + tableName + ".Id AS _id")
+		String resultRecords = new Select(accountTableName + ".*, " + accountTableName + ".Id AS _id")
 				.from(Account.class)
+				.innerJoin(Password.class)
+				.on(
+					passwordTableName + ".Id = " +
+					accountTableName + ".Id"
+				)
 				.orderBy("account_name")
 				.toSql();
 		// Execute query on the underlying ActiveAndroid SQLite database
