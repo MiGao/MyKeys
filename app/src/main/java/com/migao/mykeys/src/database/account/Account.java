@@ -9,11 +9,14 @@ import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 import com.migao.mykeys.src.database.account.AccountContract.AccountEntry;
 import com.migao.mykeys.src.database.password.Password;
+import com.migao.mykeys.src.database.password.PasswordContract.PasswordEntry;
+
+import static android.provider.BaseColumns._ID;
 
 /**
  * Created by Mike on 4/21/2015.
  */
-@Table(name = "Account", id = AccountEntry._ID)
+@Table(name = "Account", id = _ID)
 public class Account extends Model {
 	@Column(name = "account_name")
 	private String accountName;
@@ -34,8 +37,8 @@ public class Account extends Model {
 				.from(Account.class)
 				.innerJoin(Password.class)
 				.on(
-					passwordTableName + ".Id = " +
-					accountTableName + ".Id"
+						passwordTableName + "." + PasswordEntry._ID + " = " +
+						accountTableName + "." + AccountEntry._ID
 				)
 				.orderBy("account_name")
 				.toSql();
