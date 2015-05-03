@@ -45,7 +45,6 @@ public class AccountAdapter extends CursorAdapter implements View.OnTouchListene
 			viewHolder.tvAccountName = (TextView) convertView.findViewById(R.id.tvAccountName);
 			viewHolder.tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
 			viewHolder.tvPassword = (TextView) convertView.findViewById(R.id.tvPassword);
-			viewHolder.position = position;
 
 			convertView.setOnTouchListener(this);
 			convertView.setTag(viewHolder);
@@ -53,6 +52,7 @@ public class AccountAdapter extends CursorAdapter implements View.OnTouchListene
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
+		viewHolder.position = position;
 		cursor.moveToPosition(position);
 
 		final String accountName = cursor.getString(cursor.getColumnIndexOrThrow(AccountEntry.COLUMN_NAME_ACCOUNT_NAME));
@@ -96,12 +96,11 @@ public class AccountAdapter extends CursorAdapter implements View.OnTouchListene
 		switch (action) {
 			case MotionEvent.ACTION_DOWN:
 				cursor.moveToPosition(viewHolder.position);
-				String accountId = cursor.getString(cursor.getColumnIndex(AccountContract.AccountEntry._ID));
-				Log.d("accountId", accountId);
-				String password = Password.retrievePassword(accountId).getPassword();
-				Log.d("Password", password);
 
 				if (viewHolder != null) {
+					String accountId = cursor.getString(cursor.getColumnIndex(AccountContract.AccountEntry._ID));
+					String password = Password.retrievePassword(accountId).getPassword();
+
 					viewHolder.tvAccountName.setVisibility(View.GONE);
 					viewHolder.tvUserName.setVisibility(View.GONE);
 					viewHolder.tvPassword.setVisibility(View.VISIBLE);

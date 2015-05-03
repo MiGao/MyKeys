@@ -6,10 +6,12 @@ import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 import com.migao.mykeys.src.database.account.Account;
 
+import static android.provider.BaseColumns._ID;
+
 /**
  * Created by Mike on 4/21/2015.
  */
-@Table(name = "Password")
+@Table(name = "Password", id = _ID)
 public class Password extends Model {
 	@Column(name = "password")
 	private String password;

@@ -33,7 +33,7 @@ public class Account extends Model {
 		String passwordTableName = Cache.getTableInfo(Password.class).getTableName();
 
 		// Query all items without any conditions
-		String resultRecords = new Select(accountTableName + ".*, " + accountTableName + ".Id AS _id")
+		String resultRecords = new Select(accountTableName + ".*, " + accountTableName + "." + AccountEntry._ID)
 				.from(Account.class)
 				.innerJoin(Password.class)
 				.on(
